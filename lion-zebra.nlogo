@@ -193,40 +193,10 @@ NIL
 1
 
 SLIDER
-16
-125
-188
-158
-max-turn
-max-turn
-0
-100
-31.0
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-16
-167
-188
-200
-max-step
-max-step
-0
-100
-31.0
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-17
-399
-189
-432
+14
+284
+186
+317
 lion-population
 lion-population
 0
@@ -239,9 +209,9 @@ HORIZONTAL
 
 SLIDER
 16
-247
+129
 188
-280
+162
 zebra-gain-from-food
 zebra-gain-from-food
 0
@@ -303,9 +273,9 @@ PENS
 
 SLIDER
 15
-288
+171
 187
-321
+204
 lion-gain-from-food
 lion-gain-from-food
 0
@@ -332,10 +302,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-17
-357
-189
-390
+13
+242
+185
+275
 zebra-population
 zebra-population
 0
