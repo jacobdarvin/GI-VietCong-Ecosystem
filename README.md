@@ -6,6 +6,8 @@ _After successfully defending Khe Sanh, the Special Operations Group (SOG) and M
 
 The world contains three main entities: **GI**, **Việt Cộng**, and **rice**. **GI**s try to hunt down **Việt Cộng** soldiers, with each kill providing them the intel (energy for **GI**) needed to find the defector and therefore extend their stay in the field of operation. **Việt Cộng** soldiers randomly go about the **rice** (energy for **Việt Cộng**) field eating patches, keeping them alive. Both the **GI** and the **Việt Cộng** have a chance to multiply through reinforcements and recruiting impressionable college students, respectively. 
 
+<div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/readme/alt2.gif" /></div>
+
 ## Agents (Breeds)
 
 <div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/readme/gi.png" height="150px" width="1000px"/></div>
