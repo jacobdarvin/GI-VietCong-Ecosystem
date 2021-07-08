@@ -1,5 +1,5 @@
-breed [lions lion]
-breed [zebras zebra]
+breed [gis gi]
+breed [viets viet]
 
 turtles-own [energy]
 
@@ -8,8 +8,8 @@ patches-own [countdown]
 to GATHER_INTEL
   clear-all
   reset-ticks
-  create-lions gi-numbers
-  create-zebras vietcong-numbers
+  create-gis gi-numbers
+  create-viets vietcong-numbers
 
   ;; sets up the map to make every patch green and sets the regrowth time of each grass patch
   ask patches
@@ -21,8 +21,8 @@ to GATHER_INTEL
   ]
 
   ;; sets up the predators
-  ;; each lion will start at a
-  ask lions
+  ;; each gi will start at a
+  ask gis
   [
     set shape "person soldier"
     set size 1.5f
@@ -32,7 +32,7 @@ to GATHER_INTEL
     setxy random-xcor random-ycor
   ]
 
-  ask zebras
+  ask viets
   [
     set shape "person farmer"
     set size 1.5
@@ -46,13 +46,13 @@ end
 to BEGIN_ROLLING_THUNDER
   if not any? turtles [ stop ]
 
-  ask lions [
+  ask gis [
     ;Move
     move
     set energy energy - 1
 
-    ;Eat Zebra
-    eat-zebra
+    ;Eat viet
+    eat-viet
 
     ;Starve
     if energy < 0 [die]
@@ -65,7 +65,7 @@ to BEGIN_ROLLING_THUNDER
     ]
   ]
 
-  ask zebras [
+  ask viets [
     ;Move
     move
     set energy energy - 1
@@ -118,8 +118,8 @@ to eat-grass
     ]
 end
 
-to eat-zebra
-  let prey one-of zebras-here
+to eat-viet
+  let prey one-of viets-here
   if prey != nobody
   [
     ask prey [die]
@@ -234,10 +234,10 @@ gi-reinforcements
 HORIZONTAL
 
 SLIDER
-423
-453
-703
-486
+424
+454
+649
+488
 vietcong-recruit-college-students
 vietcong-recruit-college-students
 1
@@ -264,8 +264,8 @@ true
 true
 "" ""
 PENS
-"GIs" 1.0 0 -14730904 true "" "plot count lions"
-"Vietcong" 1.0 0 -2674135 true "" "plot count zebras"
+"GIs" 1.0 0 -14730904 true "" "plot count gis"
+"Vietcong" 1.0 0 -2674135 true "" "plot count viets"
 
 SLIDER
 15
@@ -285,8 +285,8 @@ HORIZONTAL
 SLIDER
 761
 185
-940
-218
+925
+219
 rice-regrowth-time
 rice-regrowth-time
 0
