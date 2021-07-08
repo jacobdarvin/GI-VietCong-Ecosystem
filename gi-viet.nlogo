@@ -237,7 +237,7 @@ SLIDER
 424
 454
 649
-488
+487
 vietcong-recruit-college-students
 vietcong-recruit-college-students
 1
@@ -286,7 +286,7 @@ SLIDER
 761
 185
 925
-219
+218
 rice-regrowth-time
 rice-regrowth-time
 0
