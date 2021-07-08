@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/header.png" height="150px" width="1000px"/></div>
+<div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/readme/header.png" height="150px" width="1000px"/></div>
 
 # GI-Viet Ecosystem
  
@@ -8,17 +8,22 @@ The world contains three main entities: **GI**, **Việt Cộng**, and **rice**.
 
 ## Agents (Breeds)
 
+<div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/readme/gi.png" height="150px" width="1000px"/></div>
+
 ### GI Operative
 
 The team travels to Hue City where they are given the objective of extracting a Soviet defector from the MACV compound. Mason and Woods are joined by fellow operative Joseph Bowman. Although the defector was killed, Mason acquires his dossier, and the team fight through the city to extraction by boat.
 
 This agent serves as the predator in the model, where they are initially spawned into the world at a random coordinate. Their energy level is set randomly from a range of zero to `2 * <energy gain from intel>`. They remain on the map by eliminating **Việt Cộng** soldiers and gathering intel. Each **GI** has a user-given chance to call for reinforcements in the form of another **GI** agent. 
 
+<div style="text-align:center"><img src="https://github.com/Darvvvin/GI-VietCong-Ecosystem/blob/main/readme/cong.png" height="150px" width="1000px"/></div>
+
 ### Việt Cộng
 
 They do not have formal military uniforms because they are guerrilla fighters. They only tied a piece of red rope on their left arm to distinguish themselves from the others (i.e. civilians). They are commonly seen wearing green pith helmets with leaves for camouflage and head protection, or bandannas, flannel work outfits, or they are shirtless leaving them susceptible to chest shots, and wear sandals, which expose feet and toes to shots and the muddy environment.
 
 Like the predators, they spawn at random locations in the map. Their primary food source are the patches of **rice**, which has a random rate of growth from zero to the user-set upper-bound in the growth slider. There is a also a user-given chance to recruit university students to join in the efforts of upholding Hồ Chí Minh's communist vision.
+
 
 
 
