@@ -234,10 +234,10 @@ gi-reinforcements
 HORIZONTAL
 
 SLIDER
-423
-453
-703
-486
+424
+454
+649
+488
 vietcong-recruit-college-students
 vietcong-recruit-college-students
 1
@@ -265,7 +265,7 @@ true
 "" ""
 PENS
 "GIs" 1.0 0 -14730904 true "" "plot count gis"
-"Vietcong" 1.0 0 -2674135 true "" "plot count viets"
+"Việt Cộng" 1.0 0 -2674135 true "" "plot count viets"
 
 SLIDER
 15
@@ -285,8 +285,8 @@ HORIZONTAL
 SLIDER
 761
 185
-940
-218
+925
+219
 rice-regrowth-time
 rice-regrowth-time
 0

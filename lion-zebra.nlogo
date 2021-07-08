@@ -253,9 +253,9 @@ PLOT
 14
 923
 180
-populations
-time
-pop.
+Reports
+Time (Days)
+Population
 0.0
 100.0
 0.0
@@ -264,8 +264,8 @@ true
 true
 "" ""
 PENS
-"GIs" 1.0 0 -14730904 true "" "plot count gis"
-"Vietcong" 1.0 0 -2674135 true "" "plot count viets"
+"GI's" 1.0 0 -14730904 true "" "plot count gis"
+"Việt Cộng" 1.0 0 -2674135 true "" "plot count viets"
 
 SLIDER
 15
