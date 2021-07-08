@@ -1,5 +1,3 @@
-globals [ max-zebra ]
-
 breed [lions lion]
 breed [zebras zebra]
 
@@ -7,42 +5,45 @@ turtles-own [energy]
 
 patches-own [countdown]
 
-to setup
+to GATHER_INTEL
   clear-all
   reset-ticks
-  create-lions lion-population
-  create-zebras zebra-population
+  create-lions gi-numbers
+  create-zebras vietcong-numbers
 
+  ;; sets up the map to make every patch green and sets the regrowth time of each grass patch
   ask patches
   [
-    set pcolor green
-    ifelse pcolor = green
-    [ set countdown grass-regrowth-time ]
-    [ set countdown random grass-regrowth-time ]
+    set pcolor 56
+    ifelse pcolor = 56
+    [ set countdown rice-regrowth-time ]
+    [ set countdown random rice-regrowth-time ]
   ]
 
+  ;; sets up the predators
+  ;; each lion will start at a
   ask lions
   [
-    set shape "default"
-    set size 1.5
-    set color yellow
+    set shape "person soldier"
+    set size 1.5f
+    set color white
 
-    set energy random (2 * lion-gain-from-food)
+    set energy random (2 * gi-gain-from-intel)
     setxy random-xcor random-ycor
   ]
 
   ask zebras
   [
-    set shape "default"
+    set shape "person farmer"
     set size 1.5
-    set color blue
+    set color yellow
 
-    set energy random (2 * zebra-gain-from-food)
+    set energy random (2 * vietcong-gain-from-rice)
     setxy random-xcor random-ycor
   ]
 end
 
-to go
+to BEGIN_ROLLING_THUNDER
   if not any? turtles [ stop ]
 
   ask lions [
@@ -57,7 +58,7 @@ to go
     if energy < 0 [die]
 
     ;Reproduce
-    if random-float 100 < lions-reproduce
+    if random-float 100 < gi-reinforcements
     [
       set energy (energy / 2)
       hatch 1 [rt random-float 360 fd 1]
@@ -70,7 +71,7 @@ to go
     set energy energy - 1
 
     ;Eat Grass
-    if pcolor = green
+    if pcolor = 56
     [
       set pcolor brown
       set energy (energy + 50)
@@ -80,7 +81,7 @@ to go
     if energy < 0 [die]
 
     ;Reproduce
-    if random-float 100 < zebras-reproduce
+    if random-float 100 < vietcong-recruit-college-students
     [
       set energy (energy / 2)
       hatch 1 [rt random-float 360 fd 1]
@@ -92,8 +93,8 @@ to go
    if pcolor = brown [
      ifelse countdown <= 0
      [
-       set pcolor green
-       set countdown grass-regrowth-time
+       set pcolor 56
+       set countdown rice-regrowth-time
      ]
       [ set countdown countdown - 1]
     ]
@@ -113,7 +114,7 @@ to eat-grass
   if pcolor = green
     [
       set pcolor brown
-      set energy (energy + zebra-gain-from-food)
+      set energy (energy + vietcong-gain-from-rice)
     ]
 end
 
@@ -122,7 +123,7 @@ to eat-zebra
   if prey != nobody
   [
     ask prey [die]
-    set energy energy + lion-gain-from-food
+    set energy energy + gi-gain-from-intel
   ]
 end
 @#$#@#$#@
@@ -159,7 +160,7 @@ BUTTON
 196
 82
 NIL
-setup
+GATHER_INTEL
 NIL
 1
 T
@@ -173,10 +174,10 @@ NIL
 BUTTON
 16
 86
-195
-119
+198
+120
 NIL
-go
+BEGIN_ROLLING_THUNDER
 T
 1
 T
@@ -190,10 +191,10 @@ NIL
 SLIDER
 14
 284
-186
+198
 317
-lion-population
-lion-population
+gi-numbers
+gi-numbers
 0
 100
 50.0
@@ -205,10 +206,10 @@ HORIZONTAL
 SLIDER
 16
 129
-188
+199
 162
-zebra-gain-from-food
-zebra-gain-from-food
+vietcong-gain-from-rice
+vietcong-gain-from-rice
 0
 100
 50.0
@@ -222,8 +223,8 @@ SLIDER
 453
 420
 486
-lions-reproduce
-lions-reproduce
+gi-reinforcements
+gi-reinforcements
 1
 20
 5.0
@@ -235,10 +236,10 @@ HORIZONTAL
 SLIDER
 423
 453
-648
+703
 486
-zebras-reproduce
-zebras-reproduce
+vietcong-recruit-college-students
+vietcong-recruit-college-students
 1
 20
 5.0
@@ -263,16 +264,16 @@ true
 true
 "" ""
 PENS
-"lions" 1.0 0 -7171555 true "" "plot count lions"
-"zebras" 1.0 0 -13345367 true "" "plot count zebras"
+"GIs" 1.0 0 -14730904 true "" "plot count lions"
+"Vietcong" 1.0 0 -2674135 true "" "plot count zebras"
 
 SLIDER
 15
 171
-187
+200
 204
-lion-gain-from-food
-lion-gain-from-food
+gi-gain-from-intel
+gi-gain-from-intel
 0
 100
 50.0
@@ -284,25 +285,25 @@ HORIZONTAL
 SLIDER
 761
 185
-923
+940
 218
-grass-regrowth-time
-grass-regrowth-time
+rice-regrowth-time
+rice-regrowth-time
 0
 100
-80.0
+20.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-15
-242
-187
-275
-zebra-population
-zebra-population
+14
+245
+197
+278
+vietcong-numbers
+vietcong-numbers
 0
 100
 50.0
@@ -316,8 +317,8 @@ MONITOR
 184
 755
 229
-Total Food
-count patches with [pcolor = green] / 4
+Total Rice
+count patches with [pcolor = 56] / 4
 17
 1
 11
@@ -538,6 +539,84 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
+
+person farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Polygon -6459832 true false 116 4 113 21 71 33 71 40 109 48 117 34 144 27 180 26 188 36 224 23 222 14 178 16 167 0
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
+
+person police
+false
+0
+Polygon -1 true false 124 91 150 165 178 91
+Polygon -13345367 true false 134 91 149 106 134 181 149 196 164 181 149 106 164 91
+Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
+Polygon -13345367 true false 120 90 105 90 60 195 90 210 116 158 120 195 180 195 184 158 210 210 240 195 195 90 180 90 165 105 150 165 135 105 120 90
+Rectangle -7500403 true true 123 76 176 92
+Circle -7500403 true true 110 5 80
+Polygon -13345367 true false 150 26 110 41 97 29 137 -1 158 6 185 0 201 6 196 23 204 34 180 33
+Line -13345367 false 121 90 194 90
+Line -16777216 false 148 143 150 196
+Rectangle -16777216 true false 116 186 182 198
+Rectangle -16777216 true false 109 183 124 227
+Rectangle -16777216 true false 176 183 195 205
+Circle -1 true false 152 143 9
+Circle -1 true false 152 166 9
+Polygon -1184463 true false 172 112 191 112 185 133 179 133
+Polygon -1184463 true false 175 6 194 6 189 21 180 21
+Line -1184463 false 149 24 197 24
+Rectangle -16777216 true false 101 177 122 187
+Rectangle -16777216 true false 179 164 183 186
+
+person service
+false
+0
+Polygon -7500403 true true 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
+Polygon -1 true false 120 90 105 90 60 195 90 210 120 150 120 195 180 195 180 150 210 210 240 195 195 90 180 90 165 105 150 165 135 105 120 90
+Polygon -1 true false 123 90 149 141 177 90
+Rectangle -7500403 true true 123 76 176 92
+Circle -7500403 true true 110 5 80
+Line -13345367 false 121 90 194 90
+Line -16777216 false 148 143 150 196
+Rectangle -16777216 true false 116 186 182 198
+Circle -1 true false 152 143 9
+Circle -1 true false 152 166 9
+Rectangle -16777216 true false 179 164 183 186
+Polygon -2674135 true false 180 90 195 90 183 160 180 195 150 195 150 135 180 90
+Polygon -2674135 true false 120 90 105 90 114 161 120 195 150 195 150 135 120 90
+Polygon -2674135 true false 155 91 128 77 128 101
+Rectangle -16777216 true false 118 129 141 140
+Polygon -2674135 true false 145 91 172 77 172 101
+
+person soldier
+false
+0
+Rectangle -7500403 true true 127 79 172 94
+Polygon -10899396 true false 105 90 60 195 90 210 135 105
+Polygon -10899396 true false 195 90 240 195 210 210 165 105
+Circle -7500403 true true 110 5 80
+Polygon -10899396 true false 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -6459832 true false 120 90 105 90 180 195 180 165
+Line -6459832 false 109 105 139 105
+Line -6459832 false 122 125 151 117
+Line -6459832 false 137 143 159 134
+Line -6459832 false 158 179 181 158
+Line -6459832 false 146 160 169 146
+Rectangle -6459832 true false 120 193 180 201
+Polygon -6459832 true false 122 4 107 16 102 39 105 53 148 34 192 27 189 17 172 2 145 0
+Polygon -16777216 true false 183 90 240 15 247 22 193 90
+Rectangle -6459832 true false 114 187 128 208
+Rectangle -6459832 true false 177 187 191 208
 
 plant
 false
