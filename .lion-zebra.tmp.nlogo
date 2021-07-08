@@ -18,7 +18,7 @@ to setup
     set pcolor green
     ifelse pcolor = green
     [ set countdown grass-regrowth-time ]
-    [set countdown random grass-regrowth-time]
+    [ set countdown random grass-regrowth-time]
   ]
 
   ask lions
@@ -220,7 +220,7 @@ HORIZONTAL
 SLIDER
 210
 453
-341
+420
 486
 lions-reproduce
 lions-reproduce
@@ -233,9 +233,9 @@ lions-reproduce
 HORIZONTAL
 
 SLIDER
-349
+423
 453
-521
+648
 486
 zebras-reproduce
 zebras-reproduce
